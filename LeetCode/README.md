@@ -1,6 +1,6 @@
-## LeetCode 题解
+## LeetCode Explanation
 
-每个文件夹下都会有相关题目,LeetCode题目,包括自己的**思路,解题代码**
+Each folder will have related problems, LeetCode topics, including  my ideas, problem-solving code.
 
-不过现阶段水平还有限,很多都是看答案然后自己写一遍,再整理的思路,**有时间得再钻研**
+However, at this stage, my level is still limited. For me, these questions are difficult for now and I think will get through this and in the final,I will get an offer.
 
