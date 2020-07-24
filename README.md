@@ -1,4 +1,4 @@
-# goLeetCode
+# BeGreat
 [1.初识HashMap](https://mp.weixin.qq.com/s?__biz=MzU3MjUxMzMwNg==&amp;mid=2247483799&amp;idx=1&amp;sn=1d77f249627d693dfb4444d564cf3b78&amp;chksm=fcce8ce2cbb905f4a59a3a2bade8b2fe1c6241506965eb1d71a3a8eba6f953e1297d0c99fb25&token=649875628&lang=zh_CN#rd)
 
 [2.查找算法有这些](https://mp.weixin.qq.com/s?__biz=MzU3MjUxMzMwNg==&amp;mid=2247483766&amp;idx=1&amp;sn=60374bbe329dcf9ca93953352b4f74fd&amp;chksm=fcce8c03cbb905154ede0a0e70b1b4e5b30ef20668cc9ed61a1dff453476381a4929beb00fc6&token=649875628&lang=zh_CN#rd)
