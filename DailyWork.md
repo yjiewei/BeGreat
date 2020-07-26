@@ -1243,9 +1243,83 @@ java8中，下面哪个类用到了解决哈希冲突的开放定址法
  D：TreeMap
 ```
 
+```java
+正确答案: C
+threadlocalmap使用开放定址法解决haah冲突，hashmap使用链地址法解决hash冲突
+
+散列表之开放定址法 
+   在链接法中，如果不同键值却将有相同的映射值，即有不同键值的元素却映射到散列表中的同一位置，那么就采用链表的方法，将映射到同一位置的元素插入到同一个链表之中，当需要删除， 查询元素时，只需要遍历该链表即可，链接法在最坏情况下删除和查询元素的时间代价为O(n) 
+   今天我们来讲散列表中另外一种解决冲突的方法，那就是开放定址法(open addressing)。 假如你在外面旅游时，吃坏东西，急需上厕所，当你好不容易找到一件洗手间的时候，发现排了好多人，这时你会怎么做？ 
+   如果是链接法:排队不就行了，我就在外面等，迟早会排到我的 
+   如果是开放定址法:直接放弃现有厕所，去寻找新的厕所 
+   没错，放弃已被占用的位置，寻找新的插入位置就是开放定址法的思想，开放定址法中的开放二字指的是没有被占用的位置，定址指的是确定位置。开放定址法中，所有的元素都放在散列表中(链接法放在链表中)。也就是说散列表中的每一个位置，要么有元素，要么没有元素。当需要删除，查询元素时，我们从某一个位置开始，按照某种特定的确定下一个位置的方法来检查所有表项，直到找到目标元素，或者没有找到。
+```
 
 
 
+## 7.23
+
+```java
+关于AOP错误的是？
+A：AOP将散落在系统中的“方面”代码集中实现
+B：AOP有助于提高系统可维护性
+C：AOP已经表现出将要替代面向对象的趋势
+D：AOP是一种设计模式，Spring提供了一种实现
+```
+
+```JAVA
+正确答案: C 
+AOP 和 OOP的区别：
+1. 面向方面编程 AOP 偏重业务处理过程的某个步骤或阶段，强调降低模块之间的耦合度，使代码拥有更好的移植性。
+2. 面向对象编程 (oop) 则是对业务分析中抽取的实体进行方法和属性的封装。
+也可以说 AOP 是面向业务中的动词领域， OOP 面向名词领域。
+AOP 的一个很重要的特点是源代码无关性，也就是说如果我们的系统中引用了 AOP 组件，即使我们把该组件去掉，系统代码也应该能够编译通过。要实现这一点，可以使用动态 proxy 模式。
+```
+
+
+
+## 7.24
+
+```JAVA
+问：通常情况，JVM中使用类加载器的优先级是
+A：BootstrapClassLoader > ExtensionClassLoader > ApplicationClassLoader > UserClassLoader
+B：ExtensionClassLoader > BootstrapClassLoader > ApplicationClassLoader > UserClassLoader
+C：BootstrapClassLoader > ExtensionClassLoader > UserClassLoader > ApplicationClassLoader
+D：ExtensionClassLoader > BootstrapClassLoader > UserClassLoader > ApplicationClassLoader
+```
+
+```
+正确答案 A
+根类加载器（bootstrap class loader）扩展类加载器（extensions class loader）系统类加载器（system class loader）用户类加载器（user class loader）
+
+考点：Java虚拟机-双亲委派模型
+
+类加载器工作过程:
+1. 类加载器收到了类加载的请求，它首先不会自己去尝试加载这个类，而是把这个请求委派给父类加载器去完成；
+2. 所有的加载请求最终都应该传送到最顶层的启动类加载器中； 
+3. 只有当父加载器反馈自己无法完成这个加载请求（它的搜索范围中没有找到所需的类）时，子加载器才会尝试自己去完成加载。
+
+题目当中，提到“通常情况”是因为这个双亲委派模型并不是一个具有强制性约束力的模型，而是Java设计者们推荐给开发者的一种类加载器实现的最佳实践
+```
+
+
+
+## 7.25
+
+```JAVA
+问：jvm中垃圾回收分为scanvenge gc和full GC，其中full GC触发的条件可能有哪些：【多选】（ ）
+A：栈空间满
+B：年轻代空间满
+C：年老代满
+D：持久代满
+E：system.gc
+```
+
+```JAVA
+答案：CDE
+年轻代引起scanvenge young gc 
+栈空间满不会 也没有 gc
+```
 
 
 
