@@ -1323,6 +1323,35 @@ E：system.gc
 
 
 
+## 7.27
+
+```java
+问：运用下列哪个命令能够获取JVM的内存映像
+A：jinfo
+B：jmap
+C：jhat
+D：jstat
+
+```
+
+```java
+正确答案：B
+
+1、jps：查看本机java进程信息。
+
+2、jstack：打印线程的栈信息，制作线程dump文件。
+
+3、jmap：打印内存映射，制作堆dump文件
+
+4、jstat：性能监控工具
+
+5、jhat：内存分析工具
+
+6、jconsole：简易的可视化控制台
+
+7、jvisualvm：功能强大的控制台
+```
+
 
 
 
