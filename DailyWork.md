@@ -1376,6 +1376,18 @@ D：Spring 提供的 DAO （数据访问对象）支持主要的目的是便于�
 
 
 
+## 7.29
+
+```java
+问：对于Spring Boot项目，下列关于设置日志级别的描述中，正确的是（）
+A：可以在application.properties中设置日志级别
+B：可以在xml中设置logback的日志级别
+C：可以按照日志级别，拆分logback的日志
+D：不能把所有级别的日志，打印到同一个日志文件里
+
+正确答案 A B C
+```
+
 
 
 
