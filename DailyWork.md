@@ -1390,6 +1390,18 @@ D：不能把所有级别的日志，打印到同一个日志文件里
 
 
 
+## 7.30
+
+```java
+下面列举的组件中，哪些会被Spring Boot自动装配到Spring容器中（）
+A：JavaMailSender
+B：MimeMessage
+C：MimeMessageHelper
+D：TemplateEngine
+
+正确答案 A D
+```
+
 
 
 

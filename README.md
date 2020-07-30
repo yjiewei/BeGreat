@@ -11,3 +11,6 @@
 
 [6.Hashtable和HashMap的区别](https://mp.weixin.qq.com/s?__biz=MzU3MjUxMzMwNg==&amp;mid=2247483873&amp;idx=1&amp;sn=4238b635d59f67c1c37d70cd000f9989&amp;chksm=fcce8c94cbb90582f98d282a353c6ab363b543daa828732485f09fa37ee8b0d081f121b75f9e&token=649875628&lang=zh_CN#rd)
 
+[7.String,StringBuffer and StringBuilder](https://mp.weixin.qq.com/s?__biz=MzU3MjUxMzMwNg==&mid=2247483888&idx=1&sn=4861e72a54e810ee64705f3c655edfa1&chksm=fcce8c85cbb905938d078d8fbb648b85ac1f08e87bcee7d09010fb4bd8f02c8a5c354259fa52&token=348492519&lang=zh_CN#rd)
+
+[8.java.util包下的集合](https://mp.weixin.qq.com/s?__biz=MzU3MjUxMzMwNg==&mid=2247483909&idx=1&sn=d5366fcdd5794c68026ac2ecb8f98296&chksm=fcce8f70cbb906663cb5a0b97ba5beb24a3ae47e12d6d58008ae0a5376c274574aaa2befcd3f&token=348492519&lang=zh_CN#rd)
