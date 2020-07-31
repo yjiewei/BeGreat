@@ -1404,6 +1404,21 @@ D：TemplateEngine
 
 
 
+## 7.31
+
+```
+问：下面有关spring DAO，描述错误的是？
+A：Spring提供的DAO(数据访问对象)支持主要的目的是便于以标准的方式使用不同的数据访问技术。
+B：方便的事务管理: Spring的声明式事务管理力度是类级别
+C：异常包装:Spring能够包装Hibernate异常，把它们从CheckedException变为RuntimeException; 开发者可选择在恰当的层处理数据中不可恢复的异常，从而避免烦琐的 catch/throw 及异常声明
+D：Spring提供的DAO支持了JDBC、JDO和Hibernate
+```
+
+```
+正确答案：B
+Spring提供的DAO(数据访问对象)支持主要的目的是便于以标准的方式使用不同的数据访问技术。 简化 DAO 组件的开发。 Spring提供了一套抽象DAO类供你扩展。这些抽象类提供了一些方法，用来简化代码开发。 IoC 容器的使用，提供了 DAO 组件与业务逻辑组件之间的解耦。所有的 DAO 组件，都由容器负责注入到业务逻辑组件中，其业务组件无须关心 DAO 组件的实现。 面向接口编程及 DAO 模式的使用，提高了系统组件之间的解耦，降低了系统重构的成本。 方便的事务管理: Spring的声明式事务管理力度是方法级。 异常包装:Spring能够包装Hibernate异常，把它们从CheckedException变为RuntimeException; 开发者可选择在恰当的层处理数据中不可恢复的异常，从而避免烦琐的 catch/throw 及异常声明。
+```
+
 
 
 
