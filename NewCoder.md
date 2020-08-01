@@ -138,6 +138,126 @@ public static void main(String[] args) {
 
 ### 8.1
 
+```java
+1.执行下列代码的输出结果是(30 )
+public class Demo{
+　public static void main(String args[]){
+　　　int num = 10;
+　　　System.out.println(test(num));
+}
+public static int test(int b){
+　　　try{
+       b += 10;
+　　　　return b;
+　　　}
+　　　catch(RuntimeException e){}
+　　　catch(Exception e2){}
+　　　finally{
+　　　　b += 10;
+　　　　return b;
+　　　}
+　　}
+}
+
+关于try catch 知识：
+    程序运行到 try块，b=20;
+	并没有发生异常，不运行catch块，运行到return b;
+	因为finally块无论如何都要运行，因此并不发生返回动作，进行运行finally块，b=30;
+	进行程序返回输出；
+        
+结论一：
+return语句并不是函数的最终出口，如果有finally语句，这在return之后还会执行finally（return的值会暂存在栈里面，等待finally执行后再返回）
+结论二：
+finally里面不建议放return语句，根据需要，return语句可以放在try和catch里面和函数的最后。可行的做法有四：
+（1）return语句只在函数最后出现一次。
+（2）return语句仅在try和catch里面都出现。
+（3）return语句仅在try和函数的最后都出现。
+（4）return语句仅在catch和函数的最后都出现。
+注意，除此之外的其他做法都是不可行的，编译器会报错
+```
+
+
+
+```
+2.下面关于Java package的描述，哪个是正确的:（）
+I. 包不提供将所有类名分区为更易管理的块的机制.
+II. 包提供可见性控制机制.  ✔
+III. 包的一个重要属性是包内定义的所有类都可以通过该包外的代码访问.
+IV. 声明为包的一部分的类的.class文件可以存储在多个目录中.
+
+
+为了更好地组织类，Java 提供了包机制，用于区别类名的命名空间。
+包的作用：
+1、把功能相似或相关的类或接口组织在同一个包中，方便类的查找和使用。
+
+2、如同文件夹一样，包也采用了树形目录的存储方式。同一个包中的类名字是不同的，不同的包中的类的名字是可以相同的，当同时调用两个不同包中相同类名的类时，应该加上包名加以区别。因此，包可以避免名字冲突。
+
+3、包也限定了访问权限，拥有包访问权限的类才能访问某个包中的类。
+
+Java 使用包（package）这种机制是为了防止命名冲突，访问控制，提供搜索和定位类（class）、接口、枚举（enumerations）和注释（annotation）等。
+```
+
+
+
+```
+3.下面赋值语句中正确的是（）
+double d=5.3e12; ✔
+float f=11.1;
+int i=0.0;
+Double oD=3;
+
+java中整型默认的是int,浮点默认的是double.
+B: double类型的11.1 转成 float，是需要强制转换的
+C: double类型的0.0 转成 int，也是需要强制转换的
+D: int 转为 封装类型Double，是无法编译的
+    Double oD = 3.0， 会把double类型的3.0自动装箱为Double，没有问题
+    
+double d = 5.3e12; 相当于 5.3*10的12次方，科学计数法
+double d = 3;  对  （自动转换类型）
+Double d = 3; 错  （自动装箱的目标必须严格对应它拆箱后的类型）
+Double d = 3.0;对 （自动装箱）
+自动装箱和类型的自动转换不能同时进行，这告诉我们偷一个懒可以，多了就过分了。
+小数默认为double类型的，所以要用小数表示float的话要加上f或者F后缀；同理，整数默认为int型，用整数表示long的话需要加上l后者L后缀
+占用字节空间少的类型可以向占用字节多的类型自动转换。反之则不行，需要强转确保用户明确精度丢失的风险
+```
+
+
+
+```
+4.下面哪个不属于HttpServletResponse接口完成的功能？
+答案：C
+A：设置HTTP头标  
+response.setHeader("Refresh","3"); //三秒刷新页面一次
+
+B：设置cookie
+Cookie c1 = new Cookie("username","only");
+response.addCookie(c1);
+
+C（错误）：读取路径信息,request读取路径信息
+从request获取各种路径总结
+request.getRealPath("url"); // 虚拟目录映射为实际目录
+request.getRealPath("./");    // 网页所在的目录
+request.getRealPath("../"); // 网页所在目录的上一层目录
+request.getContextPath();    // 应用的web目录的名称
+
+D：输出返回数据
+HttpServleteResponse.getOutputStream().write();
+```
+
+```java
+5.
+public interface Status {
+ /*INSERT CODE HERE*/  int MY_VALUE=10;
+ }
+
+接口中字段的修饰符：public static final（默认不写）
+接口中方法的修饰符：public abstract（默认不写）
+```
+
+
+
+### 8.2
+
 
 
 

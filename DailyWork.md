@@ -1421,6 +1421,14 @@ Spring提供的DAO(数据访问对象)支持主要的目的是便于以标准的
 
 
 
+## 8.1
+
+```java
+问：什么是Spring的IoC？Spring IoC对于javabean的创建有哪几种方式？
+    控制反转，将创建对象的权力交给spring容器，实现解耦
+    创建bean有两种吧：注解@Bean/XML方式
+```
+
 
 
 
