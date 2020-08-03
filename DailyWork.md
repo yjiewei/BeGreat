@@ -1421,6 +1421,8 @@ Spring提供的DAO(数据访问对象)支持主要的目的是便于以标准的
 
 
 
+# August
+
 ## 8.1
 
 ```java
@@ -1428,6 +1430,29 @@ Spring提供的DAO(数据访问对象)支持主要的目的是便于以标准的
     控制反转，将创建对象的权力交给spring容器，实现解耦
     创建bean有两种吧：注解@Bean/XML方式
 ```
+
+
+
+## 8.3
+
+```java
+Spring bean 的默认作用范围是
+A：Prototype
+B：Singleton
+C：Session
+D：Abstract
+
+正确答案：B
+在Spring中，bean的作用范围分以下几种：
+singleton：使用该属性定义Bean时，IOC容器仅创建一个Bean实例，IOC容器每次返回的是同一个Bean实例。
+                  singleton是默认的作用域，当定义Bean时，如果没有指定scope配置项，Bean的作用域被默认为singleton
+prototype：使用该属性定义Bean时，IOC容器可以创建多个Bean实例，每次返回的都是一个新的实例
+request：该属性仅对HTTP请求产生作用，使用该属性定义Bean时，每次HTTP请求都会创建一个新的Bean，适用于WebApplicationContext环境。
+session：该属性仅用于HTTP Session，同一个Session共享一个Bean实例。不同Session使用不同的实例。
+global session：该属性仅用于HTTP Session，同session作用域不同的是，所有的Session共享一个Bean实例。
+```
+
+
 
 
 
