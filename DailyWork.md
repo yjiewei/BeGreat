@@ -1454,7 +1454,20 @@ global session：该属性仅用于HTTP Session，同session作用域不同的�
 
 
 
-## 8.4
+## 8.6
+
+```java
+问：在高并发，事物等场景下，MYSQL5.6数据库默认使用哪种存储引擎？
+A：Myisam
+B：InnoDB
+C：Memory
+D：ndbCluster
+
+正确答案：B
+Mysql在V5.1之前默认存储引擎是MyISAM；在此之后默认存储引擎是InnoDB
+```
+
+
 
 
 

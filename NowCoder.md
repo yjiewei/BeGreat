@@ -704,7 +704,138 @@ D.不是return之前，是return执行完成之前，return表达式的结果会
 
 ### 8.6
 
+```java
+1.假设num已经被创建为一个ArrayList对象，并且最初包含以下整数值：[0，0，4，2，5，0，3，0]。 执行下面的方法numQuest(),最终的输出结果是什么？
+private List<Integer> nums;
+        //precondition: nums.size() > 0
+        //nums contains Integer objects
+        public void numQuest() {
+        int k = 0;
+        Integer zero = new Integer(0);
+        while (k < nums.size()) {
+        if (nums.get(k).equals(zero))
+        nums.remove(k); // 移除了一个第二个0变成了第一个就不会删除了
+        k++;
+    }
+}
 
+[0, 4, 2, 5, 3]
+```
+
+
+
+```
+2.下面哪段程序能够正确的实现了GBK编码字节流到UTF-8编码字节流的转换：
+byte[] src,dst;
+正确答案: B   你的答案: D (错误)
+dst=String.fromBytes(src，"GBK").getBytes("UTF-8")
+dst=new String(src，"GBK").getBytes("UTF-8")
+dst=new String("GBK"，src).getBytes()
+dst=String.encode(String.decode(src，"GBK"))，"UTF-8" ) // 没有这个方法
+
+答案：B
+操作步骤就是先解码再编码
+用new String(src，"GBK")解码得到字符串
+用getBytes("UTF-8")得到UTF8编码字节数组
+```
+
+
+
+```
+3.输出结果是 null
+public class Base
+{
+    private String baseName = "base";
+    public Base()
+    {
+        callName();
+    }
+
+    public void callName()
+    {
+        System. out. println(baseName);
+    }
+
+    static class Sub extends Base
+    {
+        private String baseName = "sub";
+        public void callName()
+        {
+            System. out. println (baseName) ;
+        }
+    }
+    public static void main(String[] args)
+    {
+        Base b = new Sub();
+    }
+}
+
+答案：A
+ new Sub();在创造派生类的过程中首先创建基类对象，然后才能创建派生类。
+创建基类即默认调用Base()方法，在方法中调用callName()方法，由于派生类中存在此方法，则被调用的callName（）方法是派生类中的方法，此时派生类还未构造，所以变量baseName的值为null
+
+1.首先，需要明白类的加载顺序。
+类加载
+(1) 父类静态代码块(包括静态初始化块，静态属性，但不包括静态方法)
+(2) 子类静态代码块(包括静态初始化块，静态属性，但不包括静态方法 )
+对象创建
+(3) 父类非静态代码块( 包括非静态初始化块，非静态属性 )
+(4) 父类构造函数
+(5) 子类非静态代码块 ( 包括非静态初始化块，非静态属性 )
+(6) 子类构造函数
+其中：类中静态块按照声明顺序执行，并且(1)和(2)不需要调用new类实例的时候就执行了(意思就是在类加载到方法区的时候执行的)
+2.其次，需要理解子类覆盖父类方法的问题，也就是方法重写实现多态问题。
+Base b = new Sub();它为多态的一种表现形式，声明是Base,实现是Sub类， 理解为 b 编译时表现为Base类特性，运行时表现为Sub类特性。
+当子类覆盖了父类的方法后，意思是父类的方法已经被重写，题中 父类初始化调用的方法为子类实现的方法，子类实现的方法中调用的baseName为子类中的私有属性。
+由1.可知，此时只执行到步骤4.,子类非静态代码块和初始化步骤还没有到，子类中的baseName还没有被初始化。所以此时 baseName为空。 所以为null。
+```
+
+
+
+```
+4.要导入java/awt/event下面的所有类，叙述正确的是？()
+正确答案: C   你的答案: A (错误)
+import java.awt.*和import java.awt.event.*都可以
+只能是import java.awt.*
+只能是import java.awt.event.*
+import java.awt.*和import java.awt.event.*都不可以
+
+导包只可以导到当前层，不可以再导入包里面的包中的类。你说你吃了晚饭，我怎么知道你有没有吃午饭
+```
+
+
+
+```
+5.关于异常的编程，以下描述错误的是：（ ）
+正确答案: A   你的答案: C (错误)
+在有除法存在的代码处，为了防止分母为零，必须抛出并捕获异常
+int i=Integer.parseInt(”123a”);将产生NumberFormatException
+int a[]=null; a[0]=1; 将产生NullPointerException
+输入输出流编程中，读和写时都要抛出IOException
+
+Java的异常分为两种，一种是运行时异常（RuntimeException），一种是非运行异常也叫检查式异常（CheckedException）。
+1、运行时异常不需要程序员去处理，当异常出现时，JVM会帮助处理。常见的运行时异常有：
+    ClassCastException(类转换异常)
+    ClassNotFoundException
+    IndexOutOfBoundsException(数组越界异常)
+    NullPointerException(空指针异常)
+    ArrayStoreException(数组存储异常，即数组存储类型不一致)
+    还有IO操作的BufferOverflowException异常
+2、非运行异常需要程序员手动去捕获或者抛出异常进行显示的处理，因为Java认为Checked异常都是可以被修复的异常。常见的异常有：
+    IOException
+    SqlException
+```
+
+
+
+```
+6.在Java中，对于不再使用的内存资源，如调用完成的方法，“垃圾回收器”会自动将其释放。（ ✖ ）
+正确答案: B   你的答案: A (错误)
+```
+
+
+
+### 8.7
 
 
 
