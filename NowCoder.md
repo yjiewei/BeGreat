@@ -1235,6 +1235,124 @@ double
 
 
 
+### 8.11
+
+```
+1.下面哪个不是标准Statement类？
+正确答案: D   你的答案: C (错误)
+Statement
+PreparedStatement
+CallableStatement
+BatchedStatement
+
+答案：D
+Statement在JDBC中相当于SQL语句的载体
+A，Statement是最基本的用法，采用字符串拼接的方式，存在注入漏洞
+B，PreparedStatement对Statement中的SQL语句进行预编译，同时检查合法性，效率高
+C，CallableStatement接口扩展 PreparedStatement，用来调用存储过程,它提供了对输出和输入/输出参数的支持。CallableStatement 接口还具有对 PreparedStatement 接口提供的输入参数的支持。
+D，不是标准的Statement类
+```
+
+
+
+```
+2.以下代码执行的结果显示是多少（ ）？
+Integer i1 = 128;
+Integer i2 = 128;
+i1 == i2; false
+
+String i3 = "100";
+String i4 = "1" + new String("00");
+i3 == i4; false;  得看是什么时候生成的？运行还是编译的时候
+
+Integer i5 = 100;
+Integer i6 = 100;
+i5 == i6; true
+
+正确答案: D   你的答案: D (正确)
+true,false,true
+false,true,false
+true,true,false
+false,false,true
+```
+
+其实当我们在为Integer赋值的时候，java编译器会将其翻译成调用valueOf()方法。比如Integer i=127翻译为Integer i=Integer.valueOf(127)
+
+然后我们来看看valueOf()函数的源码：
+
+public static Integer valueOf(int i)
+    {
+        //high为127
+        if(i >= -128 && i <= IntegerCache.high)
+            return IntegerCache.***[i + 128];
+        else
+            return new Integer(i);
+    }
+
+**可以看出，对于-128到127之间的数，Java会对其进行缓存。而超出这个范围则新建一个对象。**
+
+所以现在回到这道问题
+
+i1和i2为128，超出范围，所以都需要新建对象，对象比较为false；
+
+i5和i6为100，在范围之内，在执行Integer i5=100时，就会直接缓存到内存中，但执行执行Integer i6=100时，就直接从缓存里取，而不需要新建对象，所以为true。
+
+```
+String str1=”java”;    //指向字符串池
+String str2=”blog”;   //指向字符串池
+
+String s=str1+str2;   //s是指向堆中值为"javablog"的对象，+运算符会在堆中建立来两个String对象，这两个对象的值分别是"java" "blog". 也就是说从字符串池中复制这两个值，然后在堆中创建两个对象，然后再建立对象s,然后将"javablog"的堆地址赋给s.    这句共创建了?个String 对象！
+
+System.out.println(s==”javablog”);   //结果是false。
+Jvm确实对型如String str1=”java”;的String对象放在常量池里，但是它是在编译时那么做的，而String s=str1+str2;是在运行时刻才能知道，也就是说str1+str2是在堆里创建的，所以结果为false了
+```
+
+
+
+```
+3.关于访问权限说法正确 的是 ？ ( )
+正确答案: B   你的答案: A (错误)
+外部类前面可以修饰public,protected和private
+成员内部类前面可以修饰public,protected和private
+局部内部类前面可以修饰public,protected和private
+以上说法都不正确
+```
+
+|            | private | default | protected | public |
+| :--------: | ------- | ------- | --------- | ------ |
+| 同一个类中 | √       | √       | √         | √      |
+| 同一个包中 |         | √       | √         | √      |
+|   子类中   |         |         | √         | √      |
+| 全局范围内 |         |         |           | √      |
+
+（ 1 ）对于外部类而言，它也可以使用访问控制符修饰，但外部类只能有两种访问控制级别： public 和默认。
+
+​			因为外部类没有处于任何类的内部，也就没有其所在类的内部、所在类的子类两个范围，因此 private 和 protected 访问控制符对外部类没有意义。
+
+（ 2 ）内部类的上一级程序单元是外部类，它具有 4 个作用域：同一个类（ private ）、同一个包（ protected ）和任何位置（ public ）。
+
+（ 3 ） 因为局部成员的作用域是所在方法，其他程序单元永远不可能访问另一个方法中的局部变量，所以所有的局部成员都不能使用访问控制修饰符修饰。
+
+
+
+```
+4.在java7中，下列不能做switch()的参数类型是？
+正确答案: D   你的答案: D (正确)
+int型
+枚举类型
+字符串
+浮点型
+switch语句后的控制表达式只能是short、char、int、long整数类型和枚举类型，不能是float，double和boolean类型。String类型是java7开始支持。
+```
+
+
+
+
+
+
+
+
+
 
 
 
