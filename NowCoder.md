@@ -1462,6 +1462,84 @@ D，start是把线程从new变成了runnable
 
 
 
+#### 8.13
+
+```
+1.有关线程的叙述正确的是()
+正确答案: C   你的答案: C (正确)
+可以获得对任何对象的互斥锁定。
+通过继承Thread类或实现Runnable接口，可以获得对类中方法的互斥锁定。
+线程通过使用synchronized关键字可获得对象的互斥锁定。
+线程的创建只能通过继承Thread类来实现。
+
+ 采用synchronized修饰符实现的同步机制叫做互斥锁机制，它所获得的锁叫做互斥锁。每个对象都有一个monitor(锁标记)，当线程拥有这个锁标记时才能访问这个资源，没有锁标记便进入锁池。任何一个对象系统都会为其创建一个互斥锁，这个锁是为了分配给线程的，防止打断原子操作。每个对象的锁只能分配给一个线程，因此叫做互斥锁。
+```
+
+
+
+```
+2.Java中基本的编程单元为：类，基本存储单元是变量。
+```
+
+
+
+```
+3.以下 _____ 不是 Object 类的方法
+
+正确答案: D   你的答案: C (错误)
+clone（）   object没有copy() 但是有clone()
+finalize()
+toString()
+hasNext()  ✖ 这个是遍历器的一个方法。
+```
+
+
+
+```
+4.下面有关servlet的层级结构和常用的类，说法正确的有?
+
+正确答案: A B C D   你的答案: 空 (错误)
+GenericServlet类：抽象类，定义一个通用的、独立于底层协议的Servlet。
+大多数Servlet通过从GenericServlet或HttpServlet类进行扩展来实现
+ServletConfig接口定义了在Servlet初始化的过程中由Servlet容器传递给Servlet得配置信息对象
+HttpServletRequest接口扩展ServletRequest接口，为HTTP Servlet提供HTTP请求信息
+```
+
+![img](https://uploadfiles.nowcoder.com/images/20170518/1562929_1495091266467_AA89EDF1B0D43CAA9A893C73A1615398)
+
+```
+5.往OuterClass类的代码段中插入内部类声明, 哪一个是错误的:
+public class OuterClass{
+    private float f=1.0f;
+    //插入代码到这里
+}
+
+正确答案: A B C D   你的答案: B D (错误)
+
+class InnerClass{
+	public static float func(){return f;}
+}
+
+abstract class InnerClass{
+	public abstract float func(){}
+}
+
+static class InnerClass{
+	protected static float func(){return f;}
+}
+
+public class InnerClass{
+ 	static float func(){return f;}
+}
+
+主要考核了这几个知识点：
+1.静态内部类才可以声明静态方法 A
+2.静态方法不可以使用非静态变量 C D
+3.抽象方法不可以有函数体 B
+```
+
+
+
 
 
 
