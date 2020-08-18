@@ -1817,6 +1817,111 @@ a!= 4||b==1
 
 
 
+#### 8.18
+
+```
+1.下面赋值语句中正确的是（）
+
+正确答案: A   你的答案: A (正确)
+double d=5.3e12; 科学计数法 没问题
+float f=11.1; 需要强制转换
+int i=0.0;    需要强制转换
+Double oD=3;  会转换成double，但是不会自动装箱，两个只能帮你一个
+```
+
+
+
+```
+2.
+public class CharToString {
+ public static void main(String[] args)
+ {
+  char myChar = 'g';
+  String myStr = Character.toString(myChar);
+  System.out.println("String is: "+myStr);
+  myStr = String.valueOf(myChar);
+  System.out.println("String is: "+myStr);
+ }
+}
+
+String is: g
+String is: g
+
+返回值是String
+```
+
+
+
+```
+3.
+A，java的内存回收是自动的，Gc在后台运行，不需要用户手动操作
+B，java中不允许使用指针
+C,内存回收线程负责释放无用内存
+D，内存回收线程可以释放无用的对象内存
+```
+
+
+
+```
+4.在各自最优条件下,对N个数进行排序,哪个算法复杂度最低的是? （）
+
+正确答案: A   你的答案: D (错误)
+插入排序
+快速排序
+堆排序
+归并排序
+```
+
+![img](https://uploadfiles.nowcoder.com/images/20190727/5227440_1564208997208_C0C78CE31C2575E39A0EE7AE31E20FB8)
+
+
+
+```
+5.关于ThreadLocal类 以下说法正确的是
+正确答案: D E   你的答案: D E (正确)
+ThreadLocal继承自Thread  没有，他只是一个普通类
+ThreadLocal实现了Runnable接口  没有
+ThreadLocal重要作用在于多线程间的数据共享
+ThreadLocal是采用哈希表的方式来为每个线程都提供一个变量的副本
+ThreadLocal保证各个线程间数据安全，每个线程的数据不会被另外线程访问和破坏
+
+1、ThreadLocal的类声明：
+public class ThreadLocal<T>
+可以看出ThreadLocal并没有继承自Thread，也没有实现Runnable接口。所以AB都不对。
+
+2、ThreadLocal类为每一个线程都维护了自己独有的变量拷贝。每个线程都拥有了自己独立的一个变量。
+所以ThreadLocal重要作用并不在于多线程间的数据共享，而是数据的独立，C选项错。
+由于每个线程在访问该变量时，读取和修改的，都是自己独有的那一份变量拷贝，不会被其他线程访问，
+变量被彻底封闭在每个访问的线程中。所以E对。
+
+3、ThreadLocal中定义了一个哈希表用于为每个线程都提供一个变量的副本：
+ static class ThreadLocalMap {
+
+        static class Entry extends WeakReference<ThreadLocal> {
+            /** The value associated with this ThreadLocal. */
+            Object value;
+
+            Entry(ThreadLocal k, Object v) {
+                super(k);
+                value = v;
+            }
+        }
+
+        /**
+         * The table, resized as necessary.
+         * table.length MUST always be a power of two.
+         */
+        private Entry[] table;
+}
+所以D对。
+```
+
+
+
+
+
+
+
 
 
 
