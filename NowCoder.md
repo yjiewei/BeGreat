@@ -1918,7 +1918,205 @@ public class ThreadLocal<T>
 
 
 
+#### 8.19
 
+```
+1.下列说法正确的是( )
+正确答案: C   你的答案: A (错误)
+volatile,synchronized 都可以修改变量，方法以及代码块
+volatile，synchronized 在多线程中都会存在阻塞问题
+volatile能保证数据的可见性，但不能完全保证数据的原子性，synchronized即保证了数据的可见性也保证了原子性
+volatile解决的是变量在多个线程之间的可见性、原子性，而sychroized解决的是多个线程之间访问资源的同步性
+
+volatile -禁止指令重排序 -变量线程可见性 -不能保证原子性
+synchronized 可见性。原子性。有序性。
+
+volatile是轻量级的线程同步，volatile只能用于变量。而synchronized可以用在方法和代码块。
+
+volatile在多线程下不会阻塞，synchronized可能会阻塞。
+```
+
+
+
+```
+2.0可以作为除数，不能作为被除数....搞错了这个我
+public class Test
+{  
+    public static int aMethod(int i)throws Exception
+    {
+        try{
+            return i/10; // 这里会正常执行
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("exception in a aMethod");
+        }finally{
+      		System.out.printf("finally");
+        }
+	} 
+    public static void main(String[] args){
+        try
+        {
+            aMethod(0);
+        }
+        catch (Exception ex)
+        {
+            System.out.printf("exception in main");
+        }
+        System.out.printf("finished");
+    }
+}
+
+finally exception in main finished 如果函数那里有问题。
+```
+
+
+
+```
+3.自动转型 问题。
+byte a = 3;
+byte b = 2;
+//b = (byte) (a+b); // 需要手动强转
+a += b; // 自动强转
+
+byte c = 126;
+byte d = 127;
+//c += d;
+
+System.out.println(c+d);
+
+
+byte类型的变量在做运算时被会转换为int类型的值，故A、B左为byte，右为int，会报错；
+而C、D语句中用的是a+=b的语句，此语句会将被赋值的变量自动强制转化为相对应的类型。
+```
+
+
+
+```
+4.下面有关java object默认的基本方法，说法错误的是？
+正确答案: B   你的答案: B (正确)
+equals(Object obj) 指示某个其他对象是否与此对象“相等”
+copy() 创建并返回此对象的一个副本 ✖ 只有clone方法
+wait() 导致当前的线程等待，直到其他线程调用此对象的 notify() 方法或 notifyAll() 方法
+toString() 返回该对象的字符串表示
+```
+
+
+
+```
+5.下列有关JAVA异常处理的叙述中正确的是（）
+
+正确答案: A B D   你的答案: A B C D (错误)
+finally是为确保一段代码不管是否捕获异常都会被执行的一段代码
+throws是用来声明一个成员方法可能抛出的各种非运行异常情况
+final用于可以声明属性和方法，分别表示属性的不可变及方法的不可继承 ✖
+throw是用来明确地抛出一个异常情况
+
+C：final用于可以声明属性和方法，分别表示属性的不可变及方法的不可覆盖。不是方法的不可继承
+```
+
+
+
+#### 8.20
+
+```
+1.下面叙述那个是正确的？（）
+正确答案: B   你的答案: A (错误)
+java中的集合类（如Vector）可以用来存储任何类型的对象，且大小可以自动调整。但需要事先知道所存储对象的类型，才能正常使用。
+在java中，我们可以用违例（Exception）来抛出一些并非错误的消息，但这样比直接从函数返回一个结果要更大的系统开销。
+java接口包含函数声明和变量声明。
+java中，子类不可以访问父类的私有成员和受保护的成员。
+
+A.vector是线程安全的ArrayList，在内存中占用连续的空间。初始时有一个初始大小，当数据条数大于这个初始大小后会重写分配一个更大的连续空间。如果Vector定义为保存Object则可以存放任意类型。
+
+B.try{}catch{}会增加额外的开销
+选项说的情况就是我们自定义异常的情况，请仔细读：
+我们可以用违例（Exception）来抛出一些并非错误的消息，可以，并非错误的消息。
+比如我自定义一个异常，若一个变量大于10就抛出一个异常，这样就对应了B选项说的情况，我用抛出异常说明这个变量大于10，而不是用一个函数体（函数体内判断是否大于10，然后返回true或false）判断，因为函数调用是入栈出栈，栈是在寄存器之下的速度最快，且占的空间少，而自定义异常是存在堆中，肯定异常的内存开销大！所以B对。
+
+
+C选项说的是接口包含方法声明和变量声明。
+因为接口中方法默认是 abstract public,所以在接口只写函数声明是符合语法规则。
+但是变量默认是用public final static 修饰的，意思它是静态常量，常量不管在接口中还是类中必须在声明时初始化！所以C的后半句是错的，必须在声明时并给出初始化！
+```
+
+
+
+```
+2.从内存实现或者反射的角度来看，关于继承的说法正确的是（）。
+注：此处的继承不代表能调用
+正确答案: A   你的答案: B (错误)
+子类将继承父类的所有的数据域和方法
+子类将继承父类的其可见的数据域和方法
+子类只继承父类public方法和数据域
+子类只继承父类的方法，而不继承数据域
+
+只是继承了不一定有权限使用，题目有注明。
+```
+
+
+
+```
+3.设int x=1,float y=2,则表达式x/y的值是：（） 0.5 最大精度说了算
+
+本题的意义在于两点，明白这两点之后题会不会本身就不重要了：
+①float x = 1；与float x = 1.0f，这两种对于float类型的变量来说定义的方式都是正确的，也是比较常见的笔试题里面考察类型转换的例子，当第一种情况时，是将低精度int向上转型到float，是由于java的特性导致而不需要进行强制转换，而第二种情况则是比较正式的对于float变量的定义，由于这种类型本身在工作项目中并不常见，常用的带小数的数字我们一般都直接使用double类型，而double类型直接定义是没有问题的：double x = 1.0。而由于float的精度没有double类型高，因此必须对其进行显示的格式书写，如果没有这个f，就默认是double类型了。当然double x = 1.0d也是正确的命名，不信你可以尝试，虽然这是一个令人窒息的操作。
+
+②当多个精度的数字同时进行运算时，最终结果以最高精度为准。在多数情况下，整数和小数的各级混合运算中，一般结果都是double类型的。但就本题而言，结果是float类型的，因为x，y两个数字精度最高的就是float，所以最终结果是0.5，并且这个0.5是float类型的。为什么说不是double类型呢，当然如果你这样处理：double m = x/y，当然m是double类型的，也不会报错，而如果你写成int m = x/y，编译器报错提示的时候就会让你转换成float或者进行强制转换成int，他是不会提示你转换成double的，尽管这么写并没有报错，原因就是①
+中所说的向上强转。float转换成double不需要任何提示。
+
+1.0默认是double
+float t = (float) 1.0;
+float t1 =  1.0f;
+```
+
+
+
+```java
+4.这个不会啊
+class C {
+    C() {
+        System.out.print("C");
+    }
+}
+
+class A {
+    C c = new C();
+
+    A() {
+        this("A");
+        System.out.print("A");
+    }
+
+    A(String s) {
+        System.out.print(s);
+    }
+}
+
+class Test extends A {
+    Test() {
+        super("B");
+        System.out.print("B");
+    }
+
+    public static void main(String[] args) {
+        new Test();
+    }
+}
+```
+
+```
+初始化过程是这样的： 
+1.首先，初始化父类中的静态成员变量和静态代码块，按照在程序中出现的顺序初始化； 
+2.然后，初始化子类中的静态成员变量和静态代码块，按照在程序中出现的顺序初始化； 
+3.其次，初始化父类的普通成员变量和代码块，在执行父类的构造方法；
+4.最后，初始化子类的普通成员变量和代码块，在执行子类的构造方法； 
+ 
+（1）初始化父类的普通成员变量和代码块，执行 C c = new C(); 输出C 
+（2）super("B"); 表示调用父类的构造方法，不调用父类的无参构造函数，输出B 
+（3） System.out.print("B"); 
+ 所以输出CBB
+```
 
 
 
