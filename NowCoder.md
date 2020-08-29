@@ -2240,6 +2240,140 @@ System.out.println(i + ~j);
 
 
 
+#### 8.22
+
+```
+1.
+  	String str = "";
+    System.out.println(str.split(",").length);
+    for (String s : str.split(",")) {
+    System.out.println("数组里面是"+s+"--");
+    
+    1：String获取长度用的是length（）方法，而数组类型我们直接用属性length获取长度，所以String[]数组类型我们应该用length获取长度；
+    2：总结来说，因为原字符串不包含分隔符，所以直接返回原字符串，分割出来只有一个空的字符串数组，所以结果是1.（注意，虽然原字符串为空，存到字符串数组为空，但是这个空也会算一个元素。）
+    split返回的是一个数组
+```
+
+
+
+#### 8.25
+
+```java
+1.输出 1.0  1
+public static void main(String[] args) {
+    Object o1 = true ? new Integer(1) : new Double(2.0);
+    Object o2;
+    if (true) {
+        o2 = new Integer(1);
+    } else {
+        o2 = new Double(2.0);
+    }
+    System.out.print(o1);
+    System.out.print(" ");
+    System.out.print(o2);
+}
+
+三元操作符类型的转换规则：
+1.若两个操作数不可转换，则不做转换，返回值为Object类型
+2.若两个操作数是明确类型的表达式（比如变量），则按照正常的二进制数字来转换，int类型转换为long类型，long类型转换为float类型等。
+3.若两个操作数中有一个是数字S,另外一个是表达式，且其类型标示为T，那么，若数字S在T的范围内，则转换为T类型；若S超出了T类型的范围，则T转换为S类型。
+4.若两个操作数都是直接量数字，则返回值类型为范围较大者
+
+符合4，所以选D.
+```
+
+
+
+```java
+2.脑子瓦特了
+  基本数据类型均可任意互相转换。
+    
+布尔值怎么转换？
+还有强转，会丢失数据
+```
+
+
+
+```java
+3.java语言的下面几种数组复制方法中，哪个效率最高？
+正确答案: B   你的答案: D (错误)
+for 循环逐一复制
+System.arraycopy
+Array.copyOf
+使用clone方法
+    
+    复制的效率System.arraycopy>clone>Arrays.copyOf>for循环，这个有兴趣自己测试一下就知道了。这里面在System类源码中给出了arraycopy的方法，是native方法，也就是本地方法，肯定是最快的。而Arrays.copyOf(注意是Arrays类，不是Array)的实现，在源码中是调用System.copyOf的，多了一个步骤，肯定就不是最快的。前面几个说System.copyOf的不要看，System类底层根本没有这个方法，自己看看源码就全知道了。
+```
+
+
+
+#### 8.29
+
+```
+1.下面哪些情况下需要使用抽象类？
+正确答案: A B D   你的答案: A B D (正确)
+当一个类的一个或多个方法是抽象方法时
+当类是一个抽象类的子类，并且不能为任何抽象方法提供任何实现细节或方法体时
+当一个类实现多个接口时（可以实现里面的方法吗没说）
+当一个类实现一个接口，并且不能为任何抽象方法提供实现细节或方法体时
+
+主要是C选项
+C：普通类本来就可以实现多个接口，接口可以多实现，但是类不能多继承，除了接口本身可以多继承接口，接口也不能被多继承，抽象类也不可以！！
+```
+
+
+
+```
+2.以下哪一个正则表达式不能与字符串“https://www.tensorflow.org/”（不含引号）匹配？（）
+
+正确答案: B   你的答案: C (错误)
++ 是一个或多个
+？是0个或一个
+[]是不能重复的
+
+[a-z]+://[a-z.]+/
+https[://]www[.]tensorflow[.]org[/]
+[htps]+://www.tensorflow.org/
+[a-zA-Z.:/]+
+
+```
+
+
+
+#### 装箱
+
+**为什么要有装箱，因为java很多地方要使用对象，而不是基本数据类型，比如在集合类中，我们无法将int,double 等类型放进去的，因为集合的容器要求的元素是Object类型的，这也就是为什么会有包装类型的原因。**
+
+**具有对象的特点，增加了属性和方法，丰富了基本类型的操作；**
+
+Integer 包装类型的话大小-128~127是存放在常量池的。
+
+Double是都是new Double()也就是都在堆里。
+
+```
+// 不会装箱
+Integer i = new Integer(1);
+System.out.println(i);
+
+// 自动装箱 valueOf(int)
+Integer i1 = 1;
+System.out.println(i1);
+
+System.out.println(i == i1); // false
+```
+
+|   **int 4字节**   |  **Integer**  |
+| :---------------: | :-----------: |
+|  **byte 1字节**   |   **Byte**    |
+|  **short 2字节**  |   **Short**   |
+|  **long 8字节**   |   **Long**    |
+|  **float 4字节**  |   **Float**   |
+| **double 8字节**  |  **Double**   |
+|  **char 2字节**   | **Character** |
+| **boolean 1字节** |  **Boolean**  |
+
+
+
 
 
 
