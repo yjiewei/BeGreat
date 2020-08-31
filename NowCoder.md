@@ -2374,6 +2374,238 @@ System.out.println(i == i1); // false
 
 
 
+#### 8.30
+
+```java
+1.java7后关键字 switch 支不支持字符串作为条件：（）
+
+正确答案: A   你的答案: A (正确)
+支持
+不支持
+    
+switch(exp)，在JDK7之前，只能是byte、short、char、int或者对应的包装类，或者枚举常量（内部也是由整型或字符类型实现）。
+为什么必须是这些呢，因为其实exp只是对int型支持的，其他都是因为可以自动拆卸或者自动向上转型到int，所以才可以。
+到了JDK7的时候，String被引入了，为什么String能被引入呢？
+其实本质上还是对int类型值得匹配。
+原理如下，通过对case后面得String对象调用hashCode方法，得到一个int类型得hash值，然后用这个hash值来唯一标识这个case。那么当匹配时，首先调用exp的hashCode，得到exp的hash值，用这个hash值来匹配所有case，如果没有匹配成功，就说明不存在；如果匹配成功了，接着会调用字符串的equals方法进行匹配。（hash值一致，equals可不一定返回的就是true）。
+所以，exp不能为null，cas子句使用的字符串也不能为null，不然会出现空指针异常。
+```
+
+
+
+```
+2.Math.round(11.5) 等于多少 (). Math.round(-11.5) 等于多少 (  ).
+正确答案: C   你的答案: C (正确)
+11 ,-11
+11 ,-12
+12 ,-11
+12 ,-12
+
+floor ： 意为地板，指向下取整，返回不大于它的最大整数 
+ceil ： 意为天花板，指向上取整，返回不小于它的最小整数 
+round ： 意为大约，表示“四舍五入”，而四舍五入是往大数方向入。
+Math.round(11.5)的结果为12，
+Math.round(-11.5)的结果为-11而不是-12。
+```
+
+
+
+```
+3.以下表达式中，正确的是（）
+正确答案: C D   你的答案: D (错误)
+byte i=128
+boolean i=null
+long i=0xfffL
+double i=0.9239d
+```
+
+一个字节是8位，最高位是符号位，最高位为0则是正数。最高位为1则是负数
+
+如果一个数是正数，最大数则为：01111111，转为十进制为127，
+
+如果一个数是负数，按照一般人都会觉得是11111111，转为十进制为-127，
+
+**但是**：一个+0表示为：00000000，一个-0表示为：1000000，因为符号位不算在里面，所以就会有两个0，所以从一开始发明二进制的时候，就把-0规定为-128，如此二进制的补码就刚好在计算机中运作中吻合。（这是国内教材中的解释）
+
+公式：计算一个数据类型的数据大小范围：-2^（字节数*8-1）~2^(字节数*8-1)-1
+
+
+
+```
+复习复习JVM GC
+1，新生代：
+（1）所有对象创建在新生代的Eden区，当Eden区满后触发新生代的Minor GC，将Eden区和非空闲Survivor区存活的对象复制到另外一个空闲的Survivor区中。
+（2）保证一个Survivor区是空的，新生代Minor GC就是在两个Survivor区之间相互复制存活对象，直到Survivor区满为止。
+
+2，老年代：当Survivor区也满了之后就通过Minor GC将对象复制到老年代。老年代也满了的话，就将触发Full GC，针对整个堆（包括新生代、老年代、持久代）进行垃圾回收。
+
+3，持久代：持久代如果满了，将触发Full GC。
+```
+
+
+
+```
+4.以下不是修饰符final的作用的是( )。
+
+正确答案: C   你的答案: A (错误)
+修饰常量
+修饰不可被继承的类
+修饰不可变类
+修饰不可覆盖的方法
+
+基本类型变量只赋值一次，也就是常量。
+final的作用：
+    1. 修饰变量，变量的引用地址不可变，但是地址中的内容可以变。
+    2. 修饰方法，方法不可被重写，但是还是可以重载
+    3. 修饰类，类不可继承。
+    
+什么是不可变类，说的是一个类一旦被实例化，就不可改变自身的状态。常见的比如String和基本数据类型的包装类，对于这种不可变类，一旦在进行引用传递的时候，形参一开始就和实际参数指向的不是一个地址，所以在方法中对形参的改变，并不会影响实际参数。
+```
+
+
+
+#### 8.31
+
+八月的尾巴抓不住了... 希望下半年身体好点
+
+```
+1.下列方法中哪个是线程执行的方法？ （）
+正确答案: A   你的答案: A B C D (错误)
+run（）
+start（）
+sleep（）
+suspend（）
+```
+
+
+
+```
+2.
+is-a   表示继承：Gadget is-a Widget就表示Gadget 继承 Widget；
+has-a表示从属：Gadget has-a Sprocket就表示Gadget中有Sprocket的引用，Sprocket是Gadget的组成部分；
+like-a表示组合：如果A like-a B，那么B就是A的接口
+```
+
+
+
+```
+3.
+Java语言中，下面哪个语句是创建数组的正确语句？(     )
+正确答案: A B D E   你的答案: A D (错误)
+float f[][] = new float[6][6];
+float []f[] = new float[6][6];
+float f[][] = new float[][6];
+float [][]f = new float[6][6];
+float [][]f = new float[6][];
+
+出乎意料的是B选项，这也可以吗？还真的没试过。
+第一个小框框必须要有值，如果没有就不行。
+```
+
+
+
+```
+4.
+下面的switch语句中，x可以是哪些类型的数据：()
+switch(x)
+{
+	default:
+	System.out.println("Hello");
+}
+
+正确答案: B D   你的答案: A B C D E (错误)
+long
+char
+float
+byte
+double
+Object
+
+以java8为准，switch支持10种类型 
+基本类型：byte char short int 
+对于包装类 ：Byte,Short,Character,Integer String enum 
+2、实际只支持int类型 Java实际只能支持int类型的switch语句，那其他的类型时如何支持的 
+a、基本类型byte char short 原因：这些基本数字类型可自动向上转为int, 实际还是用的int。 
+b、基本类型包装类Byte,Short,Character,Integer 原因：java的自动拆箱机制 可看这些对象自动转为基本类型 
+c、String 类型 原因：实际switch比较的string.hashCode值，它是一个int类型 如何实现的，网上例子很多。此处不表。 
+d、enum类型 原因 ：实际比较的是enum的ordinal值（表示枚举值的顺序），它也是一个int类型 所以也可以说 switch语句只支持int类型
+```
+
+
+
+```
+5.下面哪个标识符是合法的？
+正确答案: D   你的答案: A (错误)
+"9HelloWorld"
+"_Hello World"
+"Hello*World"
+"Hello$World"
+
+标识符是字母开头，数字和_和$ 组成，不能有空格，不能有其他符号，只能以_或者字母开头。
+```
+
+
+
+```
+6.关于Java中的数组，下面的一些描述，哪些描述是准确的：（    ）
+正确答案: A C F   你的答案: C D F (错误)
+数组是一个对象，不同类型的数组具有不同的类
+数组长度是可以动态调整的  不可以的
+数组是一个连续的存储结构
+一个固定长度的数组可类似这样定义: int array[100]  应该是int[] array = new int[100];
+两个数组用equals方法比较时，会逐个便利其中的元素，对每个元素进行比较  没有重写，所以只是比较地址
+可以二维数组，且可以有多维数组，都是在Java中合法的
+```
+
+Object.equals()比较的是两个数组的地址，相当于==的作用，如果是遍历数组中的元素，进行一一比较，应该选择Arrays.equals()
+
+
+
+```java
+7.list是一个ArrayList的对象，哪个选项的代码填到//todo delete处，可以在Iterator遍历的过程中正确并安全的删除一个list中保存的对象？（）
+
+Iterator it = list.iterator();
+int index = 0;
+while (it.hasNext())
+{
+    Object obj = it.next();
+    if (needDelete(obj))  //needDelete返回boolean，决定是否要删除
+    {
+        //todo delete
+    }
+    index ++;
+}
+
+正确答案: A   你的答案: C (错误)
+it.remove();
+list.remove(obj);
+list.remove(index);
+list.remove(obj,index);
+
+A
+Iterator  支持从源集合中安全地删除对象，只需在 Iterator 上调用 remove() 即可。这样做的好处是可以避免 ConcurrentModifiedException ，当打开 Iterator 迭代集合时，同时又在对集合进行修改。有些集合不允许在迭代时删除或添加元素，但是调用 Iterator 的remove() 方法是个安全的做法。
+    
+源码是这么描述的：ArrayList 继承了 AbstractList， 其中AbstractList 中有个modCount 代表了集合修改的次数。在ArrayList的iterator方法中会判断 expectedModCount与 modCount是否相等，如果相等继续执行，不相等报错，只有iterator的remove方***在调用自身的remove之后让 expectedModCount与modCount再相等，所以是安全的。
+    
+不能连续两次remove()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### 9.1
+
+
+
 
 
 
