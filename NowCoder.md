@@ -2592,17 +2592,146 @@ Iterator  支持从源集合中安全地删除对象，只需在 Iterator 上调
 
 
 
+### 9月
 
-
-
-
-
-
-
-
-
+> 这个月开始为期半年的实习，不知道路会变得怎么样，但是不管怎么样，先加把劲把工作先完成好啊！
+>
+> 其次就是继续准备明年的春招，或者其他招聘，反正除了搞项目的时间，其他就努力研究基础知识呀！
 
 #### 9.1
+
+```
+1.下列整型常量 i 的定义中，正确的是(  )
+正确答案: C   你的答案: B (错误)
+final i;
+static int i;
+static final int  i=234;
+final float i=3.14f;
+
+整型 常量....
+```
+
+
+
+```java
+2.
+public class test1 {
+    static String s;
+    public static void main(String[] args) {
+        String s1;
+        System.out.println(s);
+        //System.out.println(s1);
+
+    }
+}
+
+s可以不用初始化也能使用，直接就是null
+但是s1就不行，你最多只能先声明，但是使用的时候一定要初始化。
+```
+
+
+
+```java
+3.皇上作为对象，太监作为IOC容器，当皇上要挑选妃子晚上睡觉的时候，不用管，只要到床上即可。太监则根据皇上喜好(找到对应依赖或其他对象)，找到对应的妃子送到皇上榻上。
+```
+
+
+
+
+
+#### 9.6
+
+```
+1.有关线程的叙述正确的是()
+正确答案: C D   你的答案: A C (错误)
+A.可以获得对任何对象的互斥锁定  ||  你能获得没有访问权限的吗？？？
+B.通过继承Thread类或实现Runnable接口，可以获得对类中方法的互斥锁定  || 只是创建线程哦
+C.线程通过使用synchronized关键字可获得对象的互斥锁定
+D.线程调度算法是平台独立的  || 线程调度分为协同式调度和抢占式调度，java是抢占式，也就是由操作系统来分配时间（协同式调度就是由线程本身来决定。）
+```
+
+
+
+```
+2.关于volatile关键字，下列描述不正确的是？
+正确答案: B D   你的答案: B C D (错误)
+用volatile修饰的变量，每次更新对其他线程都是立即可见的。
+对volatile变量的操作是原子性的。
+对volatile变量的操作不会造成阻塞。
+不依赖其他锁机制，多线程环境下的计数器可用volatile实现。
+
+回顾一下：volatile就是变量线程可见以及禁止指令重排序！但是没有原子性
+C我确实不太知道，有时volatile的操作不会被保存，说明不会造成阻塞。
+```
+
+
+
+```
+3.当编译并运行下面程序时会发生什么结果（D）
+public class Bground extends Thread{
+    public static void main(String argv[]){
+        Bground b = new Bground();
+        b.run();
+    }
+    public void start(){
+        for(int i=0;i<10;i++){
+            System.out.println("Value of i = "+i);
+        }
+    }
+}
+
+正确答案: D   你的答案: A (错误)
+编译错误，指明run方法没有定义
+运行错误，只鞥呢run方法没有定义
+编译通过并输出0到9
+编译通过，但无输出
+
+这里只继承了但是没有重写，所以还是thread里面的空run()方法。
+```
+
+
+
+```
+4.执行下列代码的输出结果是( 30 )
+public class Demo{
+　public static void main(String args[]){
+　　　int num = 10;
+　　　System.out.println(test(num));
+}
+public static int test(int b){
+　　　try
+　　　{
+　　　　b += 10;
+　　　　return b;
+　　　}
+　　　catch(RuntimeException e)
+　　　{
+　　　}
+　　　catch(Exception e2)
+　　　{
+　　　}
+　　　finally
+　　　{
+　　　　b += 10;
+　　　　return b;
+　　　}
+　　}
+}
+
+结论一：
+
+return语句并不是函数的最终出口，如果有finally语句，这在return之后还会执行finally（return的值会暂存在栈里面，等待finally执行后再返回）
+结论二：
+
+finally里面不建议放return语句，根据需要，return语句可以放在try和catch里面和函数的最后。可行的做法有四：
+（1）return语句只在函数最后出现一次。
+（2）return语句仅在try和catch里面都出现。
+（3）return语句仅在try和函数的最后都出现。
+（4）return语句仅在catch和函数的最后都出现。
+注意，除此之外的其他做法都是不可行的，编译器会报错
+```
+
+
 
 
 
@@ -2780,6 +2909,10 @@ MyISAM引擎的数据表，最好使用固定长度的数据列代替可变长�
 
 
 
+## -----------------
 
+## 二级标题为分类
 
-## 二级标题为分类，三级分类为月份，四级分类为日期
+## 三级分类为月份
+
+## 四级分类为日期
