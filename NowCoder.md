@@ -2735,6 +2735,58 @@ finally里面不建议放return语句，根据需要，return语句可以放在t
 
 
 
+### 11月
+
+#### 11.11
+
+```java
+1.对于构造方法，下列叙述正确的是（ ）。
+正确答案: A C D   你的答案: C D (错误)
+构造方法的优先级一般比代码块低。
+构造方法的返回类型只能是void型。 没有返回值
+构造方法的主要作用是完成对类的对象的初始化工作。 
+一般在创建新对象时，系统会自动调用构造方法。
+    
+A 静态成员变量或静态代码块>main方法>非静态成员变量或非静态代码块>构造方法
+  构造方法的作用是创建对象的时候给属性赋初值
+  静态代码块是每次加载类执行一次，实例代码块或者叫非静态代码块就每次创建对象都执行一次。
+```
+
+
+
+```
+1.bootstrap classloader －引导（也称为原始）类加载器，它负责加载Java的核心类。 
+2.extension classloader －扩展类加载器，它负责加载JRE的扩展目录（JAVA_HOME/jre/lib/ext或者由java.ext.dirs系统属性指定的）中JAR的类包。 
+3.system classloader －系统（也称为应用）类加载器，它负责在JVM被启动时，加载来自在命令java中的-classpath或者java.class.path系统属性或者 CLASSPATH 作系统属性所指定的JAR类包和类路径。
+4.User Custom ClassLoader/用户自定义类加载器(java.lang.ClassLoader的子类)
+在程序运行期间, 通过java.lang.ClassLoader的子类动态加载class文件, 体现java动态实时类装入特性
+```
+
+
+
+```
+-Xmx10240m：代表最大堆
+ -Xms10240m：代表最小堆
+ -Xmn5120m：代表新生代
+ -XXSurvivorRatio=3：代表Eden:Survivor = 3    根据Generation-Collection算法(目前大部分JVM采用的算法)，一般根据对象的生存周期将堆内存分为若干不同的区域，一般情况将新生代分为Eden ，两块Survivor；    计算Survivor大小， Eden:Survivor = 3，总大小为5120,3x+x+x=5120  x=1024
+新生代大部分要回收，采用Copying算法，快！
+老年代 大部分不需要回收，采用Mark-Compact算法
+```
+
+
+
+```
+while（）中表达式的判断，在C语言中大于0的int值都会被认为是true，而java中没有这个机制，必须是boolean类型的。
+```
+
+
+
+```
+finally一定会在return之前执行，但是如果finally使用了return或者throw语句，将会使trycatch中的return或者throw失效
+```
+
+
+
 
 
 
