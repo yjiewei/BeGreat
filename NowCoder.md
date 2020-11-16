@@ -2939,6 +2939,33 @@ finally表示总是执行。但是其实finally也有不执行的时候，但是
 
 
 
+#### 11.16
+
+```java
+public class test3{
+    public void add(Byte b){
+        b = b++;
+    }
+    @Test
+    public void test(){
+        Byte a = 127;
+        Byte b = 127;
+        add(++a);
+        System.out.print(a + " ");  // -128  符号位变为1了 而且是int强转为byte再装箱
+        add(b);
+        System.out.print(b + "");  // 127
+    }
+}
+```
+
+
+
+编译与反编译指令
+
+javac xxx.java
+
+javap -v xxx.class
+
 
 
 
