@@ -3062,6 +3062,90 @@ Java表达式转型规则由低到高转换：
 
 
 
+#### 11.19
+
+重点
+
+```java
+1.what is the result of the following code?
+
+enum AccountType
+{
+    SAVING, FIXED, CURRENT;
+    private AccountType()
+    {
+        System.out.println(“It is a account type”);
+    }
+}
+class EnumOne
+{
+    public static void main(String[]args)
+    {
+        System.out.println(AccountType.FIXED);
+    }
+}
+
+	
+Ans:Compiles fine and output is prints”It is a account type”thrice followed by”FIXED”
+编译成功并输出三次 It is a account type然后接着输出FIXED
+```
+
+```java
+枚举类在后台实现时，实际上是转化为一个继承了java.lang.Enum类的实体类，原先的枚举类型变成对应的实体类型，上例中AccountType变成了个class AccountType，并且会生成一个新的构造函数，若原来有构造函数，则在此基础上添加两个参数，生成新的构造函数，如上例子中：
+    
+    private AccountType(){ System.out.println(“It is a account type”); }
+							|
+    private AccountType(String s, int i){
+    super(s,i); System.out.println(“It is a account type”); }
+
+	并添加这些
+    public static final AccountType SAVING;
+    public static final AccountType FIXED;
+    public static final AccountType CURRENT;
+
+	static{
+    SAVING = new AccountType("SAVING", 0);
+    ...  CURRENT = new AccountType("CURRENT", 0);
+   $VALUES = new AccountType[]{
+         SAVING, FIXED, CURRENT
+    } }
+
+	以此来初始化枚举中的每个具体类型。（并将所有具体类型放到一个$VALUE数组中，以便用序号访问具体类型）
+在初始化过程中new AccountType构造函数被调用了三次，所以Enum中定义的构造函数中的打印代码被执行了3遍。
+        
+    简单来说，所有的枚举值都是类静态常量，在初始化时会对所有的枚举值对象进行第一次初始化。
+
+```
+
+
+
+```java
+2.类方法中可以直接调用对象变量。（ ）
+
+正确答案: B   你的答案: A (错误)
+正确
+错误
+    
+你这么记：我静态域在类初始化时就调用在后面 实例初始化的对象，你说怎么调用啊
+```
+
+
+
+```java
+3.StringBuffer s = new StringBuffer(x);  x为初始化容量长度
+s.append("Y"); "Y"表示长度为y的字符串
+length始终返回当前长度即y；
+对于s.capacity()：
+1.当y<x时，值为x
+以下情况，容器容量需要扩展
+2.当x<y<2*x+2时，值为 2*x+2
+3.当y>2*x+2时，值为y
+```
+
+
+
+
+
 
 
 
