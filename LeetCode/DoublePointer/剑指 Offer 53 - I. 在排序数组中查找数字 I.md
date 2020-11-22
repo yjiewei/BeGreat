@@ -56,3 +56,31 @@ class Solution {
     }
 }
 ```
+
+```java
+class Solution {
+    public int search(int[] nums, int target) {
+        // 2.再用二分 找到最左边界再计算次数
+        if(nums.length == 0) return nums.length;
+        int times = 0;
+        int left = 0;
+        int right = nums.length;
+        while(left < right){
+            int mid = left + (right - left)/2;
+            if(nums[mid] == target){
+                right = mid;
+            }else if(nums[mid] < target){
+                left = mid + 1;
+            }else if(nums[mid] > target){
+                right = mid;
+            }
+        }
+        while(left < nums.length && nums[left] == target){
+            times++;
+            left++;
+        }
+        return times;
+    }
+}
+```
+
