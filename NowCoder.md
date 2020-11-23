@@ -3364,6 +3364,39 @@ Java中的四类八种基本数据类型
 
 
 
+#### 11.23
+
+```java
+1.
+String str ="";
+System.out.print(str.split(",").length);
+
+输出的是1
+为什么不是0呢？虽然没有找到，但是空字符串整个算一个字符。
+```
+
+
+
+```2
+2.线程同步：喂，SHE
+喂（Vector）
+S（Stack）
+H（hashtable）
+E（enumeration）
+线程安全的类有hashtable concurrentHashMap synchronizedMap
+```
+
+
+
+```
+3.Socket套接字 
+就是源Ip地址，目标IP地址，源端口号和目标端口号的组合
+服务器端：ServerSocket提供的实例
+ServerSocket server= new ServerSocket(端口号)
+客户端：Socket提供的实例
+Socket soc=new Socket(ip地址，端口号)
+```
+
 
 
 
