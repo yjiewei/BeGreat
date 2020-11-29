@@ -3508,6 +3508,80 @@ public class MyClass {
 
 
 
+#### 11.29
+
+```
+1.用集线器连接的工作站集合（ ）
+正确答案: A   你的答案: 空 (错误)
+属于同一个冲突域，也属于同一个广播域
+不属于同一个冲突域，但属于同一个广播域
+不属于同一个冲突域，也不属于同一个广播域
+属于同一个冲突域，但不属于同一个广播域
+
+记住层数越靠下 越垃圾  越不能分离冲突域和广播域。
+集线器是物理层(第一层)的   啥都不能分隔
+交换机是数据链路层  可以分冲突域  不能分广播域
+路由器是网络层的   广播域和冲突域都可以分隔
+```
+
+```
+2.以下叙述中正确的是 ()
+正确答案: A   你的答案: B (错误)
+构成C程序的基本单位是函数
+可以在一个函数中定义另一个函数  emmm严格来说这是定义一个类了吧
+main( )函数必须放在其他函数之前
+所有被调用的函数一定要在调用之前进行定义
+```
+
+```
+3.对 Map 的用法，正确的有：
+
+正确答案: C D   你的答案: A C (错误)
+new java.util.Map().put("key" , "value") ;
+new java.util.SortedMap().put("key" , "value") ;
+new java.util.HashMap().put( null , null ) ;
+new java.util.TreeMap().put( 0 , null ) ;
+
+Map和SortedMap是接口，不能直接new对象
+HashMap  允许null-null键值对  C正确
+TreeMap  允许value值为null，不允许key值为null，D是value为null，key不为nul
+```
+
+```
+void waitForSignal()
+{
+    Object obj = new Object();
+    synchronized(Thread.currentThread())
+    {
+        obj.wait();
+        obj.notify();
+    }
+}
+
+这题有两个错误的地方，第一个错误是 wait() 方法要以 try/catch 包覆，或是掷出 InterruptedException 才行,因此答案就是因为缺少例外捕捉的   InterruptedException
+
+第二个错误的地方是， synchronized 的目标与 wait() 方法的物件不相同，会有 IllegalMonitorStateException ，不过 InterruptedException 会先出现，所以这不是答案
+
+最后正确的程式码应该是这样：  
+void waitForSignal() {
+	Object obj = new Object();
+    synchronized (obj) {
+        try {
+            obj.wait();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+            obj.notify();
+        }
+    }
+}
+
+第一，记住wait必须要进行异常捕获
+第二，记住调用wait或者notify方法必须采用当前锁调用，即必须采用synchronized中的对象
+```
+
+
+
 
 
 
