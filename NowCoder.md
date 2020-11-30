@@ -2,6 +2,8 @@
 
 ## Java
 
+### 编译看左边，运行看右边。
+
 ### 7月
 
 #### 7.31
@@ -3579,6 +3581,129 @@ void waitForSignal() {
 第一，记住wait必须要进行异常捕获
 第二，记住调用wait或者notify方法必须采用当前锁调用，即必须采用synchronized中的对象
 ```
+
+
+
+#### 11.30
+
+```
+1.下列程序执行后结果为( )
+class A {
+    public int func1(int a, int b) {
+        return a - b;
+    }
+}
+class B extends A {
+    public int func1(int a, int b) {
+        return a + b; // 150 150
+    }
+}
+public class ChildClass {
+    public static void main(String[] args) {
+    A a = new B();
+    B b = new B();
+    System.out.println("Result=" + a.func1(100, 50));
+    System.out.println("Result=" + b.func1(100, 50));
+    }
+}
+
+其实很简单，涉及转型的题目，分为向上或者向下转型。
+关键的来了，不论向上或者向下转型，都是一句话，“编译看左边，运行看右边”。也就是编译时候，会看左边引用类型是否能正确编译通过，运行的时候是调用右边的对象的方法。
+就本题来说，编译时候会发现左边满足条件所以编译通过，运行时候又会调用右边也就是 class B 的方法，所以答案都是150。
+```
+
+```
+2.如果int x=20, y=5，则语句System.out.println(x+y +""+(x+y)+y);  的输出结果是（）
+
+正确答案: D   你的答案: C (错误)
+2530
+55
+2052055
+25255
+
+1）不论有什么运算，小括号的优先级都是最高的，先计算小括号中的运算，得到x+y +""+25+y
+2）任何字符与字符串相加都是字符串，但是是有顺序的，字符串前面的按原来的格式相加，字符串后面的都按字符串相加，得到25+“”+25+5
+3）上面的结果按字符串相加得到25255
+```
+
+```java
+3.输出结果是什么  
+只new出线程对象，所以调用的方法是同一个对象中的方法，三个线程所访问的数据data和result都是同一个堆上的内容
+class Test
+{
+     private int data;
+     int result = 0;
+     public void m()
+     {
+         result += 2;
+         data += 2;
+         System.out.print(result + "  " + data);
+     }
+ }
+ class ThreadExample extends Thread
+ {
+     private Test mv;
+     public ThreadExample(Test mv)
+     {
+         this.mv = mv;
+     }
+     public void run()
+     {
+         synchronized(mv)
+         {
+             mv.m();
+         }
+     }
+ }
+ class ThreadTest
+ {
+     public static void main(String args[])
+     {
+         Test mv = new Test();
+         Thread t1 = new ThreadExample(mv);
+         Thread t2 = new ThreadExample(mv);
+         Thread t3 = new ThreadExample(mv);
+         t1.start();
+         t2.start();
+         t3.start();
+     }
+ }
+```
+
+```
+4.启动线程的两种方式：继承thread类的直接new，实现runnable的要当参数传给new thread
+```
+
+```
+5.有一个源代码，只包含import java.util.* ; 这一个import语句，下面叙述正确的是？   ( )
+正确答案: C   你的答案: B (错误)
+只能写在源代码的第一句
+可以访问java/util目录下及其子目录下的所有类
+能访问java/util目录下的所有类，不能访问java/util子目录下的所有类
+编译错误
+
+看解释是这么说的，假如util.a类，util.b.a下有个a类，那你就不知道调用的是谁了啊
+```
+
+```
+6.理解理解
+A，CopyOnWriteArrayList适用于写少读多的并发场景
+B，ReadWriteLock即为读写锁，他要求写与写之间互斥，读与写之间互斥，
+   读与读之间可以并发执行。在读多写少的情况下可以提高效率
+C，ConcurrentHashMap是同步的HashMap，读写都加锁
+D，volatile只保证多线程操作的可见性，不保证原子性
+```
+
+```
+7.JDK1.8 的 ConcurrentHashMap 采用CAS+Synchronized保证线程安全。 JDK1.7 及以前采用segment的分段锁机制实现线程安全，其中segment继承自ReentrantLock，因此采用Lock锁来保证线程安全。
+```
+
+```
+8.StringBuilder , StringBuffer ,String 都是 final 的，但是为什么StringBuilder , StringBuffer可以进行修改呢，因为不可变包括的是，引用不可变以及对象不可变，而这三个都是属于引用不可变，（也就是地址不要变，里面的内容随心所欲），而StringBuilder , StringBuffer 中都包含右append方法，可对对象中的内容进行增加。
+而String a="123"+new String("456");实际上底层是用了一个StringBuffer 进行append；
+```
+
+
 
 
 
