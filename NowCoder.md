@@ -4,6 +4,8 @@
 
 ### 编译看左边，运行看右边。
 
+> 父类不能调用子类的方法，除非重写的。
+
 ### 7月
 
 #### 7.31
@@ -3704,6 +3706,88 @@ D，volatile只保证多线程操作的可见性，不保证原子性
 ```
 
 
+
+#### 12.1
+
+> 这个月可能事情会很多，坚持住吧
+
+````
+1.编码格式由浏览器决定，浏览器根据html中指定的编码格式进行编码，tomcat根据指定的格式进行解码，另外get请求和post请求对编码格式的处理也是不同的
+````
+
+```
+2.bianyi shibai
+public class Test { 
+    public int aMethod(){
+        static int i = 0;
+        i++; 
+        return i;
+    } 
+public static void main(String args[]){
+    Test test = new Test(); 
+    test.aMethod(); 
+    int j = test.aMethod();
+    System.out.println(j);
+    } 
+}
+
+静态变量只能在类主体中定义，不能在方法中定义,静态变量属于类所有而不属于方法。
+```
+
+```
+3.输出什么
+public class foo {
+    public static void main(String sgf[]) {
+        StringBuffer a=new StringBuffer(“A”);
+        StringBuffer b=new StringBuffer(“B”);
+        operate(a,b);
+        System.out.println(a+”.”+b);
+    }
+    static void operate(StringBuffer x,StringBuffer y) {
+        x.append(y);
+        y=x;
+    }
+}
+```
+
+![](Assets\images\stringbuffer.png)
+
+```
+4.下列在Java语言中关于数据类型和包装类的说法，正确的是（）
+
+正确答案: B   你的答案: A (错误)
+基本（简单）数据类型是包装类的简写形式，可以用包装类替代基本（简单）数据类型 |不是同一个概念
+long和double都占了64位（64bit）的存储空间。✔
+默认的整数数据类型是int，默认的浮点数据类型是float。double
+和包装类一样，基本（简单）数据类型声明的变量中也具有静态方法，用来完成进制转化等。基本类型中没有静态方法
+```
+
+重点
+
+```java
+class Animal{
+    public void move(){
+        System.out.println("动物可以移动");
+    }
+}
+class Dog extends Animal{
+    public void move(){
+        System.out.println("狗可以跑和走");
+    }
+    public void bark(){
+        System.out.println("狗可以吠叫");
+    }
+}
+public class TestDog{
+    public static void main(String args[]){
+        Animal a = new Animal();
+        Animal b = new Dog(); 
+        a.move();
+        b.move();
+        b.bark();
+    }
+}
+```
 
 
 
