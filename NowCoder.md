@@ -3789,6 +3789,59 @@ public class TestDog{
 }
 ```
 
+#### 12.2
+
+```java
+1.以下代码将打印出
+ public static void main (String[] args) { 
+    String classFile = "com.jd.". replaceAll(".", "/") + "MyClass.class";
+    System.out.println(classFile);
+}
+
+正确答案: C   你的答案: C (正确)
+com. jd
+com/jd/MyClass.class
+///////MyClass.class
+com.jd.MyClass
+    
+replaceAll(String regex, String replacement) 
+每个子串替换该字符串的给予更换，给 regular expression match
+```
+
+重点
+
+```
+2.
+-Xmx10240m：代表最大堆
+ -Xms10240m：代表最小堆
+ -Xmn5120m：代表新生代
+ -XXSurvivorRatio=3：代表Eden:Survivor = 3    根据Generation-Collection算法(目前大部分JVM采用的算法)，一般根据对象的生存周期将堆内存分为若干不同的区域，一般情况将新生代分为Eden ，两块Survivor；    计算Survivor大小， Eden:Survivor = 3，总大小为5120,3x+x+x=5120  x=1024
+新生代大部分要回收，采用Copying算法，快！
+老年代 大部分不需要回收，采用Mark-Compact算法
+```
+
+```markdown
+3.类之间存在以下几种常见的关系：
+正确答案: A B C   你的答案: A B C D (错误)
+“USES-A”关系
+“HAS-A”关系
+“IS-A”关系
+“INHERIT-A”关系  ✖这是什么玩意
+```
+
+```markdown
+4.在使用super和this关键字时，以下描述错误的是（）
+正确答案: B C D   你的答案: 空 (错误)
+在子类构造方法中使用super()显示调用父类的构造方法，super()必须写在子类构造方法的第一行，否则编译不通过
+super()和this()不一定要放在构造方法内第一行
+this()和super()可以同时出现在一个构造函数中
+this()和super()可以在static环境中使用，包括static方法和static语句块
+# ============================================================
+1、super()表示调用父类构造函数、this()调用自己的构造函数，而自己的构造函数第一行要使用super()调用父类的构造函数，所以这俩不能在一个构造函数中会出现重复引用的情况
+2、super()和this()必须在构造函数第一行，所以这一点也表明他俩不能在一个构造函数中
+3、this()和super()都指的是对象，所以，均不可以在static环境中使用。包括：static变量,static方法，static语句块(里面不能使用非static类型的)。
+```
+
 
 
 
