@@ -3925,6 +3925,57 @@ System.out.println(i02==i04);
 
 
 
+#### 12.4
+
+重点
+
+```
+1.这段代码会出现什么情况？
+public class test3 {
+    public static void main(String[] args) {
+        Test test = null;
+        test.hello();// Static member 'com.yjiewei.test.Test.hello()' accessed via instance reference
+    }
+}
+class Test {
+    public static void hello() {
+        System.out.println("hello");
+    }
+}
+
+正常编译运行，输出hello
+hello()是通过实例引用调用的
+```
+
+```
+2.
+1.类指外部类，最大的类，修饰符有public(表示该类在项目所有类中可以被导入），default(该类只能在同一个package中使用）,abstract,final
+2.内部类指位于类内部但不包括位于块、构造器、方法内，且有名称的类，修饰符有public,private,protected访问控制符，也可以用static,final关键字修饰，public和private比较简单，一个表示所有可以被所有类访问，一个表示只能被自身访问，protected修饰的成员类可以被同一个包中的类和子类访问。而default修饰的成员类只能被同一个包中的类访问。
+3.局部内部类指位于块、构造器、方法内的有名称类，最多只能有final修饰
+```
+
+```
+3.子类的构造方法总是先调用父类的构造方法，如果子类的构造方法没有明显地指明使用父类的哪个构造方法，子类就调用父类不带参数的构造方法。
+而父类没有无参的构造函数，所以子类需要在自己的构造函数中显示的调用父类的构造函数。
+```
+
+```java
+4.Which statement declares a variable a which is suitable for referring to an array of 50 string objects?（Java）
+正确答案: B C F   你的答案: D E (错误)
+char a[][];
+String a[];
+String[] a;
+Object a[50];
+String a[50];
+Object a[];
+
+只是声明不是实例化。
+```
+
+
+
+
+
 
 
 
