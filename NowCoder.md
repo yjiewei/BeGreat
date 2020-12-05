@@ -3972,11 +3972,57 @@ Object a[];
 只是声明不是实例化。
 ```
 
+#### 12.5
+
+```
+1.下列哪些情况下会导致线程中断或停止运行（      ）
+正确答案: A B   你的答案: 空 (错误)
+InterruptedException异常被捕获
+线程调用了wait方法
+当前线程创建了一个新的线程
+高优先级线程进入就绪状态
+
+a.java一般都是通过interrupt来中断线程
+b.wait打断了当前操作，进入阻塞状态，
+c.新线程不会抢占时间片，所以只能等当前时间片走完才能去拿时间片
+d.高优先级不代表你就决定能够抢占，你只是比别人的机会更大而已
+```
+
+![img](http://uploadfiles.nowcoder.com/images/20150920/458054_1442763788854_B47C957C7EB6BD455B267510F3DF76F1)
 
 
 
+```
+运行时异常： 都是RuntimeException类及其子类异常，如NullPointerException(空指针异常)、IndexOutOfBoundsException(下标越界异常)等，这些异常是不检查异常，程序中可以选择捕获处理，也可以不处理。这些异常一般是由程序逻辑错误引起的，程序应该从逻辑角度尽可能避免这类异常的发生。
+    运行时异常的特点是Java编译器不会检查它，也就是说，当程序中可能出现这类异常，即使没有用try-catch语句捕获它，也没有用throws子句声明抛出它，也会编译通过。
+非运行时异常 （编译异常）： 是RuntimeException以外的异常，类型上都属于Exception类及其子类。从程序语法角度讲是必须进行处理的异常，如果不处理，程序就不能编译通过。如IOException、SQLException等以及用户自定义的Exception异常，一般情况下不自定义检查异常。
+```
 
+```java
+2.class Car extends Vehicle
+{
+    public static void main (String[] args)
+    {
+        new  Car(). run();
+    }
+    private final void run()
+    {
+        System. out. println ("Car"); // 这条语句会被输出
+    }
+}
+class Vehicle
+{
+    private final void run()
+    {
+        System. out. println("Vehicle");
+    }
+}
 
+final修饰的方法不能被重写，最多只能重载，所以他俩是不同的方法，
+    但是如果把父类变成public，就会报错，因为它不能被覆盖。
+```
+
+重点：取余操作只能用在整型
 
 
 
