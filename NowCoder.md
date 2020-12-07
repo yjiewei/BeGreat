@@ -4,6 +4,8 @@
 
 ### 编译看左边，运行看右边。
 
+### int getInt = Integer.parseInt("123string");
+
 > 父类不能调用子类的方法，除非重写的。
 
 ### 7月
@@ -4067,6 +4069,49 @@ Java中的byte，short，char进行计算时都会提升为int类型。
 ```
 
 
+
+#### 12.7
+
+```java
+1.局部内部类可以用哪些修饰符修饰？
+正确答案: C D   你的答案: A B C D (错误)
+public
+private
+abstract
+final
+```
+
+![img](https://uploadfiles.nowcoder.com/images/20190109/242025553_1547012774538_BA9669C5826A238ACEC0BD86755FA5DB)
+
+```
+2.java中 String str = "hello world"下列语句错误的是？
+正确答案: A B C   你的答案: A B C (正确)
+str+='      a' // 只能一个字符
+int strlen = str.length  // 是方法不是属性哦
+str=100        // 这是想重新投胎吗
+str=str+100    // ✔
+```
+
+重点
+
+```
+3.不是说编译检查没问题你就可以通过编译的，空指针也就是空对象你还想调用里面的方法你想多了吧
+Consider the following code:
+String s=null;
+Which code fragments cause an object of type NullPointerException to be thrown?
+
+正确答案: A C   你的答案: A C (正确)
+if((s!=null)&(s.length()>0))
+if((s!=null)&&(s.length()>0))
+if((s==null)|(s.length()==0))
+if((s==null)||(s.length()==0))
+
+========================================================================================
+|  :检测ture;不具备短路功能，会检查每一个条件，表达式中只要一个ture 就整体返回true
+|| :检测true;具备短路功能，一遇到true,就返回true;
+&:检测false;同理上；
+&&：检测false;同理上；
+```
 
 
 
