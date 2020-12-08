@@ -4113,6 +4113,49 @@ if((s==null)||(s.length()==0))
 &&：检测false;同理上；
 ```
 
+#### 12.8
+
+```java
+1.下面代码会输出几个true  答案是三个 父类都能算，但是叔叔就不能了呀
+class A{}
+
+class B extends A{}
+
+class C extends A{}
+
+class D extends B{}
+
+A obj = new D();
+
+System.out.println(obj instanceof B);
+
+System.out.println(obj instanceof C); // false
+
+System.out.println(obj instanceof D);
+
+System.out.println(obj instanceof A);
+```
+
+```
+2.equals 和 == 的差别就是：
+== 比较的是两个变量的值是否相等，如果是引用类型就比较的是两个变量在堆中的地址是否相同；
+equals比较的是值 值 值。
+另外一个点就是：toLowerCase()是重新new了一个字符串，string是不可变的。
+如果不是new而是直接"xxx"的就是存在堆中字符串常量池。
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
