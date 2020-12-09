@@ -3754,7 +3754,7 @@ public class foo {
 }
 ```
 
-![](Assets\images\stringbuffer.png)
+![](NowCoder.assets/stringbuffer.png)
 
 ```
 4.下列在Java语言中关于数据类型和包装类的说法，正确的是（）
