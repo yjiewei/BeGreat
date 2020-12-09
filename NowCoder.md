@@ -4146,7 +4146,52 @@ equals比较的是值 值 值。
 
 
 
+#### 12.9
 
+```java
+1.这个会输出什么？语法有误，while里面要是可以判断真假的表达式，Java中没有将非0元素看做真。
+public class While {
+    public void loop() {
+        int x= 10;
+        while ( x )  {
+            System.out.print("x minus one is " + (x - 1));
+            x -= 1;
+        }
+    }
+}
+```
+
+|         | 默认值    | 存储需求（字节） | 取值范围     | 示例               |
+| ------- | --------- | ---------------- | ------------ | ------------------ |
+| byte    | 0         | 1                | -2^7—2^7-1   | byte b=10;         |
+| char    | ‘ \u0000′ | 2                | 0—2^16-1     | char c=’c’ ;       |
+| short   | 0         | 2                | -2^15—2^15-1 | short s=10;        |
+| int     | 0         | 4                | -2^31—2^31-1 | int i=10;          |
+| long    | 0         | 8                | -2^63—2^63-1 | long o=10L;        |
+| float   | 0.0f      | 4                | -2^31—2^31-1 | float f=10.0F      |
+| double  | 0.0d      | 8                | -2^63—2^63-1 | double d=10.0;     |
+| boolean | false     | 1                | true\false   | boolean flag=true; |
+
+```java
+2.出错还是通过？
+public class Bground extends Thread{
+    public static void main(String argv[]){
+        Bground b = new Bground();
+        b.run();
+    }
+    public void start(){
+        for(int i=0;i<10;i++){
+            System.out.println("Value of i = "+i);
+        }
+    }
+}
+// 虽然这里没有定义run方法，所以调用的时候是调用父类的方法，默认没有任何输出。
+// start方法像是你吃苹果前的洗一下的动作，并没有真的吃到苹果，所以start方法并不会占用CPU时间片，只有真正run的时候才会占用CPU。
+```
+
+重点
+
+![](https://uploadfiles.nowcoder.com/images/20180709/3807435_1531103859654_3658A873352D1D5FB9EF74D9F9F1F0B5)
 
 
 
