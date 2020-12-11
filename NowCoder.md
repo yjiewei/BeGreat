@@ -4291,7 +4291,9 @@ Object o1 = true ? new Integer(1) : new Double(2.0);
 Object o1 = true ? new Double(1.0) : new Double(2.0);
 ```
 
+#### 12.11
 
+今天的错题集就先不写了，明天再写。
 
 
 
