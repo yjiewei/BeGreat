@@ -4295,6 +4295,29 @@ Object o1 = true ? new Double(1.0) : new Double(2.0);
 
 今天的错题集就先不写了，明天再写。
 
+```
+public class test5 {
+    public static void main(String[] args) {
+        int i;
+        for (i = 0; i < 10; ++i) {
+            System.out.println(i); // last one is 9
+        }
+        System.out.println(i); // 10
+    }
+}
+```
+
+```
+1.下面哪个行为被打断不会导致InterruptedException：（ ）？
+
+正确答案: E   你的答案: B (错误)
+Thread.join
+Thread.sleep
+Object.wait
+CyclicBarrier.await
+Thread.suspend
+```
+
 
 
 
