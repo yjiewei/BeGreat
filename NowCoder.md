@@ -4556,6 +4556,64 @@ public class Test {
 饿汉式
 ```
 
+#### 12.18
+
+```
+1.下面哪些类实现或者继承了Collection接口？
+正确答案: B C   你的答案: B C D (错误)
+HashMap
+ArrayList
+Vector
+Iterator  // 这个是collection的父类
+```
+
+```
+2.
+5的二进制是0101。
+x=5>>2 （>>带符号右移）
+将0101右移2位，为：0001。
+y=x>>>2 （>>>无符号右移，左边空缺补充为0）
+将0001右移2位，补0。结果为：0000。
+所以得出答案0
+```
+
+```
+3.length求的是字符数所以是8
+public class Test {
+    public static void main(String args[]) {
+        String s = "祝你考出好成绩！";
+        System.out.println(s.length());
+    }
+}
+```
+
+```
+4.有以下一个对象：
+public class DataObject implements Serializable{
+    private static int i=0;
+    private String word=" ";
+    public void setWord(String word){
+        this.word=word;
+    }
+    public void setI(int i){
+        Data0bject. i=I;
+     }
+}
+创建一个如下方式的DataObject:
+DataObject object=new Data0bject ( );
+object. setWord("123");
+object. setI(2);
+将此对象序列化为文件，并在另外一个JVM中读取文件，进行反序列化，请问此时读出的Data0bject对象中的word和i的值分别为：
+
+正确答案: D   你的答案: C (错误)
+"", 0
+"", 2
+"123", 2
+"123", 0
+
+序列化的是对象，不是类，类对象还是原来的，序列化并不保存静态变量。所以i是没有改变的
+```
+
 
 
 
