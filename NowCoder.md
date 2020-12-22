@@ -4706,7 +4706,16 @@ java编译出来的目标文件，可以运行在任意jvm上  // 字节码还�
 这题不会。https://www.nowcoder.com/test/question/done?tid=40139735&qid=112856#summary
 ```
 
+#### 12.22
 
+```
+1.ceil天花板数，向上取整，如果是小于0大于-1，直接-0。
+double d1=-0.5;
+System.out.println("Ceil d1="+Math.ceil(d1));
+System.out.println("floor d1="+Math.floor(d1));
+```
+
+![image-20201222143345559](NowCoder.assets/image-20201222143345559.png)
 
 
 
