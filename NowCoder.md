@@ -4717,6 +4717,83 @@ System.out.println("floor d1="+Math.floor(d1));
 
 ![image-20201222143345559](NowCoder.assets/image-20201222143345559.png)
 
+#### 12.23
+
+```
+1.由3 个“1”和 5 个“0”组成的 8 位二进制补码，能表示的最小整数（）
+正确答案: B   你的答案: A (错误)
+-126
+-125
+-32
+-3
+
+最小整数那肯定是负数啊，那么第一位得是1，那还有两个1，放在哪里呢？
+原码数1在前面肯定越小，而补码是原码变反码再+1获得，所以补码肯定1放在后面能使原码最小。
+也就是说我们现在这个补码是 1000 0011
+反码是 1111 1100
+原码是 1111 1101  其表示的是 1+4+8+16+32+64 = 125 再加上符号位就是 -125
+```
+
+![img](NowCoder.assets/6316247_1471272120187_BFDB62242C2B290778BC75D881FF07FD)
+
+```
+2.
+// 我以为这题的重点是类型装换，哈哈哈，大写Byte我倒是注意到了，
+// 用编译器试了一下，byte在-128~127之间不需要类型装换。其他就需要强装，会有丢失。
+class Two{
+    Byte x;
+}
+class PassO{
+    public static void main(String[] args){
+        PassO p=new PassO();
+        p.start();
+    }
+    void start(){
+        Two t=new Two();
+        System.out.print(t.x+" ");
+        Two t2=fix(t);
+        System.out.print(t.x+" "+t2.x);
+    }
+    Two fix(Two tt){
+        tt.x=-128; // -128~127
+        return tt;
+    }
+}
+```
+
+```
+3.子类不可以继承父类的构造方法，只可以调用父类的构造方法。
+子类中所有的构造函数都会默认访问父类中的空参数构造函数，这是因为子类的构造函数内第一行都有默认的super（）语句。super（）表示子类在初始化时调用父类的空参数的构造函数来完成初始化。一个类都会有默认的空参数的构造函数，若指定了带参构造函数，那么默认的空参数的构造函数，就不存在了。这时如果子类的构造函数有默认的super（）语句，那么就会出现错误，因为父类中没有空参数的构造函数。
+因此，在子类中默认super（）语句，在父类中无对应的构造函数，必须在子类的构造函数中通过this或super（参数）指定要访问的父类中的构造函数。
+```
+
+```
+4.Which are keywords in Java?
+正确答案: D E   你的答案: B D E (错误)
+null
+true
+sizeof
+implements
+instanceof
+
+null true false 只是显式常量值，并不是关键字或者保留字。
+sizeof不在java中。
+```
+
+重点
+
+```
+5.mysql数据组合索引（最左匹配原则，带头大哥不能死，中间兄弟不能断。）
+考察组合索引的知识。有一个最左优先的原则，组合索引(a, b, c)，会建立三个索引, (a), (a, b), (a, b, c)。
+在查询语句中，
+1)where a = xxx 
+2)或者 where a = xxx and b = yyy
+3)或者where a = xxx and b = yyy and c = zzz
+4)或者 where b = yyy and c = zzz and a = xxx
+都可以使用索引。第4）中情况可以优化成第3）种。
+不包含a的情况，则用不到索引。例如where b = yyy and c = zzz
+```
+
 
 
 
