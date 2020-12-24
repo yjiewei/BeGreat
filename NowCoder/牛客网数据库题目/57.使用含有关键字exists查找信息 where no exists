@@ -1,0 +1,32 @@
+## 57.使用含有关键字exists查找信息 where no exists...
+
+![image-20201224001311228](SQL题解模板.assets/image-20201224001311228.png)
+
+
+
+## 题解
+
+```
+
+```
+
+
+
+## 代码
+
+```sql
+-- 这个出来的答案应该是可以的，但是编译器可能识别到这里未有使用exist
+# select e.* from employees e
+# left join dept_emp d
+# on e.emp_no = d.emp_no
+# where d.dept_no is null;
+
+select * from employees e
+where not exists  -- 这里再取反
+(
+    -- 这里查询的所有存在部门的员工号
+    select emp_no from dept_emp d 
+    where d.emp_no = e.emp_no
+);
+```
+
