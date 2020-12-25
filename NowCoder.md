@@ -4836,6 +4836,33 @@ System.io.out System.io.in
 4.非检查异常(编译器不要求处置的异常): 包括运行时异常（RuntimeException与其子类）和错误（Error）。
 ```
 
+#### 12.25
+
+![image-20201225161337401](NowCoder.assets/image-20201225161337401.png)
+
+重点：这题我居然吃晃了。
+
+![image-20201225161448058](NowCoder.assets/image-20201225161448058.png)
+
+```
+3.关于抽象类
+JDK 1.8以前，抽象类的方法默认访问权限为protected
+JDK 1.8时，抽象类的方法默认访问权限变为default
+
+关于接口
+JDK 1.8以前，接口中的方法必须是public的
+JDK 1.8时，接口中的方法可以是public的，也可以是default的
+JDK 1.9时，接口中的方法可以是private的
+```
+
+这个题就很牛逼，对象的同步就实现了线程的同步，对象又是通过对象头里面的monitor来实现同步的。
+
+![image-20201225161613243](NowCoder.assets/image-20201225161613243.png)
+
+![image-20201225162020757](NowCoder.assets/image-20201225162020757.png)
+
+
+
 
 
 
