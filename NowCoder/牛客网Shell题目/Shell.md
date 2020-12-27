@@ -83,6 +83,60 @@ done
 
 
 
+### 4.输出第5行内容
+
+```
+写一个 bash脚本以输出一个文本文件 nowcoder.txt 中第5行的内容。
+示例:
+假设 nowcoder.txt 内容如下：
+welcome
+to
+nowcoder
+this
+is
+shell
+code
+
+你的脚本应当输出：
+is
+```
+
+#### 题解：
+
+```
+# #!/bin/bash
+# sed -n -e "5,5p" nowcoder.txt
+
+#!/bin/bash
+awk '{if(NR==5){print $0}}' nowcoder.txt
+```
+
+
+
+### 5.打印空行的行号
+
+![image-20201227124925378](Shell.assets/image-20201227124925378.png)
+
+#### 题解：
+
+```
+#!/bin/bash
+awk '/^$/ {print NR}' nowcoder.txt
+```
+
+
+
+### 6.删除空行 sed 
+
+![image-20201227125303314](Shell.assets/image-20201227125303314.png)
+
+#### 题解：
+
+```
+#!/bin/bash
+sed '/^$/ d' nowcoder.txt
+```
+
 
 
 
