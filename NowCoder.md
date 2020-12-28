@@ -4912,6 +4912,53 @@ int number = []{31,23,33,43,35,63};
 什么是原生类？他妈的就是基本数据类型，或者叫内置类
 ```
 
+#### 12.28
+
+```
+1.重点
+A.抽象类是可以实现接口的，而且抽象类也可以继承自抽象类
+B.对 抽象类必须有“abstract class”修饰
+C.抽象类指有abstract修饰的class，其可以包含抽象方法，也可以不包含
+D.抽象类和接口都是不能被实例化的，只有具体的类才可以被实例化
+```
+
+```
+2.接口不能扩展（继承）多个接口。（ ）
+正确答案: B   你的答案: A (错误)
+正确
+错误
+
+java类是单继承的。classB Extends classA
+java接口可以多继承。Interface3 Extends Interface0, Interface1, interface…
+        不允许类多重继承的主要原因是，如果A同时继承B和C，而b和c同时有一个D方法，A如何决定该继承那一个呢？
+        但接口不存在这样的问题，接口全都是抽象方法继承谁都无所谓，所以接口可以继承多个接口。
+```
+
+```
+难点
+3.一个文件中的字符要写到另一个文件中，首先需要（ ）。
+
+正确答案: C   你的答案: B (错误)
+System.out.print (buffer[i]);
+FileOutputStream fout = new FileOutputStream(this.filename);
+FileInputStream fin = new FileInputStream(this.filename);。
+System.in.read(buffer)。
+
+是我要先写，写之前我还得先读文件啊。
+```
+
+```
+4.类的final成员变量必须满足以下其中一个条件
+ 1、在构造函数中赋值
+ 2、初始化赋值
+```
+
+```
+5.数组用equals比较时，不是比较内容，而是比较的是值（地址，显然是两个对象，地址不同）
+```
+
+
+
 
 
 
